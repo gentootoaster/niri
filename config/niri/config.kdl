@@ -13,8 +13,8 @@ input {
             // For more information, see xkeyboard-config(7).
 
             // For example:
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+            layout "us,ru"
+            options "grp:shifts_toggle"
         }
     }
 
@@ -90,7 +90,7 @@ input {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
+    gaps 7
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -135,7 +135,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
         width 8
@@ -171,10 +171,10 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
+        // off
 
-        width 4
-        active-color "#ffc87f"
+        width 5
+        active-color "#7fc8ff"
         inactive-color "#505050"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
@@ -189,8 +189,8 @@ layout {
     struts {
         // left 64
         // right 64
-        top 24
-        bottom 24
+        // top 32
+        // bottom 32
     }
 }
 
@@ -249,6 +249,13 @@ window-rule {
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 }
+
+window-rule {
+    // Border radius 
+    clip-to-geometry false
+    geometry-corner-radius 0
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -425,7 +432,7 @@ binds {
 
     // There are also commands that consume or expel a single window to the side.
     Mod+BracketLeft  { consume-or-expel-window-left; }
-    Mod+BracketRight { consume-or-expel-window-right; }
+    mod+BracketRight { consume-or-expel-window-right; }
 
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
@@ -449,7 +456,7 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-    // Actions to switch layouts.
+    // Actions to switch outs.
     // Note: if you uncomment these, make sure you do NOT have
     // a matching layout switch hotkey configured in xkb options above.
     // Having both at once on the same hotkey will break the switching,
